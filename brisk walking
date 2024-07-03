@@ -1,0 +1,35 @@
+python
+def calculate_daily_distance_by_age(age):
+    # Среднее расстояние за один шаг в метрах
+    step_distance = 0.75
+    
+    # Условия для вычисления количества шагов в зависимости от возраста
+    if 5 <= age <= 17:
+        recommended_steps = 12000
+    elif 18 <= age <= 64:
+        recommended_steps = 10000
+    elif age >= 65:
+        recommended_steps = 8000
+    else:
+        return "Возраст вне допустимого диапазона"
+    
+    # Вычисление дневного расстояния
+    daily_distance = recommended_steps * step_distance
+    
+    return daily_distance
+
+def main():
+    try:
+        age = int(input("Введите возраст: "))
+        daily_distance = calculate_daily_distance_by_age(age)
+        
+        if isinstance(daily_distance, str):
+            print(daily_distance)
+        else:
+            print(f"Рекомендуемое расстояние для вашего возраста составляет: {daily_distance:.2f} метров в день.")
+    
+    except ValueError:
+        print("Пожалуйста, введите числовое значение для возраста.")
+        
+if __name__ == "__main__":
+    main()
